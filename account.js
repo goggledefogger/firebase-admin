@@ -143,8 +143,7 @@ FirebaseAccount.prototype.createDatabase = function(name) {
     if (err) {
       deferred.reject(err);
     } else if (response.statusCode !== 200) {
-      console.log(response);
-      deferred.reject(new Error(response));
+      deferred.reject(new Error(response.body));
     } else if (body.error) {
       deferred.reject(new Error('Firebase error: ' + body.error));
     } else if (body.success === false) {
